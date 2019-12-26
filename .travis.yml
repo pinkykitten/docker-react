@@ -7,3 +7,17 @@ before_install:
 
 script:
   - docker run -e CI=true pinkykitten/docker-react npm run test -- --coverage 
+
+deploy: 
+  provider: elasticbeanstalk
+  access_key_id:
+    secret: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secret: "$AWS_SECREET_KEY"
+  region: "ap-southeast-1"
+  app: "docker" 
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-1-160937858564"
+  bucket_path: "docker"
+  on:
+    branch: master
