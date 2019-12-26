@@ -6,4 +6,4 @@ before_install:
   - docker build -t pinkykitten/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run pinkykitten/docker-react npm run test -- --coverage --forceExit
+  - docker run -e CI=true pinkykitten/docker-react npm run test -- --coverage 
